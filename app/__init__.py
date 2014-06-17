@@ -3,7 +3,7 @@ from flask import Flask, render_template
 
 # Import SQLAlchemy
 from flask.ext.sqlalchemy import SQLAlchemy
-
+#Removed migrate until learn how this works
 from flask.ext.script import Manager
 from flask.ext.migrate import Migrate, MigrateCommand
 
@@ -38,3 +38,4 @@ app.register_blueprint(auth_module)
 # Build the database:
 # This will create the database file using SQLAlchemy
 db.create_all()
+
