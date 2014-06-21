@@ -8,6 +8,7 @@ from flask.ext.sqlalchemy import SQLAlchemy
 from flask.ext.script import Manager
 from flask.ext.migrate import Migrate, MigrateCommand
 
+
 # Define the WSGI application object
 app = Flask(__name__)
 api = restful.Api(app)
@@ -34,6 +35,15 @@ from app.mod_auth.controllers import mod_auth as auth_module
 
 # Register blueprint(s)
 app.register_blueprint(auth_module)
+
+
+# Import a module / component using its blueprint handler variable (mod_auth)
+from app.mod_location.controllers import mod_loc as loc_module
+
+# Register blueprint(s)
+app.register_blueprint(loc_module)
+
+
 # app.register_blueprint(xyz_module)
 # ..
 
