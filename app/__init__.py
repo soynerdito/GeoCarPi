@@ -1,6 +1,7 @@
 # Import flask and template operators
 from flask import Flask, render_template
 from flask.ext import restful
+from flask_bootstrap import Bootstrap
 
 # Import SQLAlchemy
 from flask.ext.sqlalchemy import SQLAlchemy
@@ -8,13 +9,14 @@ from flask.ext.sqlalchemy import SQLAlchemy
 from flask.ext.script import Manager
 from flask.ext.migrate import Migrate, MigrateCommand
 
-
 # Define the WSGI application object
 app = Flask(__name__)
+Bootstrap(app)
 api = restful.Api(app)
-
 # Configurations
 app.config.from_object('config')
+
+
 
 # Define the database object which is imported
 # by modules and controllers
@@ -30,17 +32,13 @@ manager.add_command('db', MigrateCommand)
 def not_found(error):
     return render_template('404.html'), 404
 
-# Import a module / component using its blueprint handler variable (mod_auth)
+# Blueprint Modules should be imported after database is created
+#Import different Site Modules using its blueprint handler
 from app.mod_auth.controllers import mod_auth as auth_module
-
-# Register blueprint(s)
-app.register_blueprint(auth_module)
-
-
-# Import a module / component using its blueprint handler variable (mod_auth)
 from app.mod_location.controllers import mod_loc as loc_module
 
-# Register blueprint(s)
+# Register blueprint(s) modules site routes
+app.register_blueprint(auth_module)
 app.register_blueprint(loc_module)
 
 
@@ -55,5 +53,5 @@ class Test(restful.Resource):
     def get(self, name):
         return { 'value': name }
 
-        
+
 api.add_resource(Test, '/post/<string:name>')
