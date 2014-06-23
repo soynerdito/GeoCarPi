@@ -1,8 +1,8 @@
 
 
 class GPSData:
-    
-    def fromRequest(self, gpsfix ):
+
+    def fromRequest(self, gpsfix):
         latitude = gpsfix['latitude']
         longitude = gpsfix['longitude']
         time = gpsfix['time']
