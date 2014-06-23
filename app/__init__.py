@@ -49,9 +49,17 @@ app.register_blueprint(loc_module)
 # This will create the database file using SQLAlchemy
 db.create_all()
 
+
 class Test(restful.Resource):
+    """
+        Test Comment for Test class
+    """
+
+    def __init__(self):
+        super(Test, self).__init__()
+
     def get(self, name):
-        return { 'value': name }
+        return {'value': name}
 
 
 api.add_resource(Test, '/post/<string:name>')
