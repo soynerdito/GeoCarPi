@@ -18,3 +18,10 @@ Running the code
 Project web page
 --------------
 http://soynerdito.github.io/GeoCarPi
+
+
+Libraries used
+--------------
+Leaflet		http://leafletjs.com/
+Bootstrap	http://getbootstrap.com/
+Flask		http://flask.pocoo.org/
