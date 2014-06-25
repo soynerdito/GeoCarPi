@@ -2,15 +2,17 @@
 from flask import Flask, render_template
 from flask.ext import restful
 from flask_bootstrap import Bootstrap
-
-# Import SQLAlchemy
 from flask.ext.sqlalchemy import SQLAlchemy
 #Removed migrate until learn how this works
 from flask.ext.script import Manager
 from flask.ext.migrate import Migrate, MigrateCommand
+from flask.ext.googlemaps import GoogleMaps
+
+
 
 # Define the WSGI application object
 app = Flask(__name__)
+GoogleMaps(app)
 Bootstrap(app)
 api = restful.Api(app)
 # Configurations
