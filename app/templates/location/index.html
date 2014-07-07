@@ -1,11 +1,12 @@
 {% extends "bootstrap/base.html" %}
 {% block title %}This is an example page{% endblock %}
 
+{% block navbar %}
+
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="http://leafletjs.com/dist/leaflet.css" />
 
-{% block navbar %}
 <nav class="navbar navbar-default" role="navigation">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
@@ -62,13 +63,11 @@
 {% endblock %}
 
 {% block content %}
-  <h1>Hello, Bootstrap</h1>
-  {% with %}
+	<div id="map" style="width: 600px; height: 400px"></div>
+{% endblock %}
 
-
-  <div id="map" style="width: 600px; height: 400px"></div>
-
-	<script src="http://leafletjs.com/dist/leaflet.js"></script>
+{% block scripts %}
+<script src="http://leafletjs.com/dist/leaflet.js"></script>
 	<script>
 
 		var map = L.map('map').setView([51.505, -0.09], 13);
@@ -110,5 +109,4 @@
 		map.on('click', onMapClick);
 
 	</script>
-	 {% endwith %}
 {% endblock %}
